@@ -26,6 +26,14 @@ public class Array<E> {
         this(10);
     }
 
+    public Array(E[] arr) {
+        data = (E[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
     /**
      * 获取数组中的元素个数
      *
@@ -238,5 +246,14 @@ public class Array<E> {
             newData[i] = data[i];
         }
         data = newData;
+    }
+
+    public void swap(int i, int j) {
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw new IllegalArgumentException("Index is illegal.");
+        }
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
     }
 }
